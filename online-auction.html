@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Auction</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background: #343a40;
+            overflow-y: auto;
+            transition: all 0.4s ease;
+            z-index: 19;
+            padding: 20px;
+            color: white;
+        }
+
+        #sidebar.active {
+            left: 0;
+        }
+
+        /* أزرار القائمة */
+        #sidebar li {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: white;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        #sidebar li a:hover,
+        #sidebar li a.active {
+            background-color: #298b61;
+            color: #fff;
+        }
+
+        /* مؤثرات داخل التبويبات */
+        .car-card {
+            transition: transform 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge-notify {
+            position: absolute;
+            top: 1px;
+            right: 5px;
+            background: #be181e;
+            color: white;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            padding: 3px 6px;
+        }
+
+        .auction-types {
+            position: relative;
+            background: #fff;
+            border-radius: 12px;
+            /* padding: 15px; */
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .auction-types:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .auction-types .icon-container img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .auction-types .count {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: #be181e;
+            color: #fff;
+            font-size: 0.3rem;
+            font-weight: bold;
+            border-radius: 50%;
+            padding: 5px 9px;
+            line-height: 1;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .auction-types .type {
+            font-size: 13px;
+            color: #298b61;
+        }
+
+        .toolbar {
+            position: sticky;
+            top: 0;
+            z-index: 9;
+        }
+
+        .toolbar input::placeholder {
+            color: #aaa;
+        }
+
+        .toolbar .btn {
+            border-radius: 8px;
+        }
+
+        .toolbar .btn.active {
+            background-color: #298b61;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header fixed-top">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between">
+
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+                    aria-label="Open menu">
+                    <i class="fa-solid fa-bars text-light fa-lg"></i>
+                </button>
+
+                <!-- Desktop Menu -->
+                <nav class="desktop-menu d-none d-md-flex gap-4">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="online-auction.html" class="nav-link">Online Auction</a>
+                    <a href="silent-auction.html" class="nav-link">Silent Auction</a>
+                    <a href="auction-Guide.html" class="nav-link">Auction Guide</a>
+                    <a href="about.html" class="nav-link">About Wataneya</a>
+                    <a href="contactUs.html" class="nav-link">Contact Us</a>
+                    <a href="login.html" class="btn btn-sm btn-dark text-light rounded px-3">Login | Register Now</a>
+                    <button class="btn btn-dark">العربية</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-bold" id="offcanvasMenuLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="offcanvas-list list-unstyled p-0 m-0">
+                <li class="menu-item"><a href="index.html" class="menu-link"><i class="fa fa-home icon"></i><span
+                            class="label">Home</span></a></li>
+                <li class="menu-item"><a href="online-auction.html" class="menu-link"><i
+                            class="fa fa-gavel icon"></i><span class="label">Online Auction</span></a></li>
+                <li class="menu-item"><a href="silent-auction.html" class="menu-link"><i
+                            class="fa fa-gavel icon"></i><span class="label">Silent Auction</span></a></li>
+                <li class="menu-item"><a href="auction-Guide.html" class="menu-link"><i
+                            class="fa fa-book icon"></i><span class="label">Auction Guide</span></a></li>
+                <li class="menu-item"><a href="about.html" class="menu-link"><i class="fa fa-info-circle icon"></i><span
+                            class="label">About Wataneya</span></a></li>
+                <li class="menu-item"><a href="contactUs.html" class="menu-link"><i
+                            class="fa fa-address-book icon"></i><span class="label">Contact Us</span></a></li>
+                <li class="menu-item"><a href="login.html" class="menu-link"><i class="fa fa-sign-in-alt icon"></i><span
+                            class="label">Login</span></a></li>
+                <li class="menu-item"><a href="register.html" class="menu-link"><i
+                            class="fa fa-user-plus icon"></i><span class="label">Register Now</span></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><i class="fa fa-language icon"></i><span
+                            class="label">Language</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- paage online Auction -->
+    <!-- Toolbar -->
+    <div class="toolbar d-flex align-items-center justify-content-between px-2 py-2 bg-light border-bottom mt-5">
+        <!-- Search -->
+        <div class="d-flex align-items-center flex-grow-1 me-2">
+            <i class="fa fa-search text-secondary me-2"></i>
+            <input type="text" class="form-control form-control-sm "
+                placeholder="Search filter..." style="font-size:14px;">
+        </div>
+
+        <!-- Filter -->
+        <button class="btn btn-light btn-sm me-2 shadow-sm" id="toggleSidebar" title="Filter">
+            <i class="fa-solid fa-filter"></i>
+        </button>
+
+        <!-- Sort -->
+        <button class="btn btn-light btn-sm me-2 shadow-sm" title="Sort">
+            <i class="fa fa-sort"></i>
+        </button>
+
+        <!-- Grid / List -->
+        <div class="btn-group shadow-sm">
+            <button class="btn btn-light btn-sm active" id="gridView" title="Grid View">
+                <i class="fa fa-th"></i>
+            </button>
+            <button class="btn btn-light btn-sm" id="listView" title="List View">
+                <i class="fa fa-list"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <h4 class="text-center">Available Auctions</h4>
+        <ul class="list-unstyled">
+            <!-- <li>
+                <a href="#" id="gridView" class="d-block py-2 px-2 text-decoration-none active">
+                    <i class="fa fa-th me-2"></i> Grid
+                </a>
+            </li>
+            <li>
+                <a href="#" id="listView" class="d-block py-2 px-2 text-decoration-none">
+                    <i class="fa fa-list me-2"></i> List
+                </a>
+            </li>
+        </ul> -->
+
+            <div class="container mt-4">
+                <div class="d-flex justify-content-between ">
+
+                    <button class="btn btn-success position-relative me-2"
+                        style="border-radius:5px;font-size: 10px;width: 140px;height: 25px; ">
+                        2025
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-light"
+                            style="font-size:0.5rem;background-color: #be181e; ">
+                            3
+                        </span>
+                    </button>
+
+                    <button class="btn btn-success position-relative me-2"
+                        style="border-radius:5px;font-size: 10px;width: 140px;height: 25px; ">
+                        2025
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-light"
+                            style="font-size:0.5rem;background-color: #be181e">
+                            9
+                        </span>
+                    </button>
+
+                    <button class="btn btn-success position-relative me-2"
+                        style="border-radius:5px; font-size: 10px; width: 140px;height: 25px;">
+                        2026
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-light"
+                            style="font-size:0.5rem;background-color: #be181e">
+                            10
+                        </span>
+                    </button>
+
+                    <button class="btn position-relative me-2 text-light"
+                        style="border-radius:5px;font-size: 10px; width: 140px;height: 25px;background-color:#be181e; ">
+                        All
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-danger"
+                            style="font-size:0.5rem;">
+                            22
+                        </span>
+                    </button>
+
+                </div>
+            </div>
+
+            <h4 class="mt-3">Advanced Search</h4>
+            <form>
+                <div class="mb-2">
+                    <select class="form-select">
+                        <option selected disabled>Location</option>
+                        <option>Abu Dhabi</option>
+                        <option>Al Ain</option>
+                        <option>Dubai</option>
+                        <option>Ras Al Khaimah</option>
+                        <option>Khor Fakkan</option>
+                        <option>Albush - shariah</option>
+                        <option>Umm Al Quwain</option>
+                        <option>Dubai - Warsan</option>
+                        <option>Sharjah Juwaizaa</option>
+                        <option>Abu Dhabi - Al Falah</option>
+                        <option>Dubai - Al Quoz</option>
+                        <option>Abu Dhabi – Agility Parking</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <select class="form-select">
+                        <option selected disabled>Type</option>
+                        <option>Commercial</option>
+                        <option>Accident</option>
+                        <option>Light</option>
+                        <option>Four-wheel drive</option>
+                    </select>
+                </div>
+
+                <div class="mb-2">
+                    <select class="form-select">
+                        <option selected disabled>Make</option>
+                        <option value="255">23 Seats</option>
+                        <option value="1860">Accessories</option>
+                        <option value="198">Acura</option>
+                        <option value="1517">Agricultural Equipment</option>
+                        <option value="1335">AIR COMPRESSOR</option>
+                        <option value="1240">AISHAR</option>
+                        <option value="199">Alfa Romeo</option>
+                        <option value="1892">ALLMAND</option>
+                        <option value="956">Ashok Leyland</option>
+                        <option value="200">Aston Martin</option>
+                        <option value="1275">ATLAS COPCO</option>
+                        <option value="1126">ATV</option>
+                        <option value="201">Audi</option>
+                        <option value="1340">Bamb Machine</option>
+                        <option value="1354">Bedford</option>
+                        <option value="1175">BEDFORD</option>
+                        <option value="1394">BEML</option>
+                        <option value="202">Bentley</option>
+                        <option value="1890">Biostrada</option>
+                        <option value="203">Bizzarrini</option>
+                        <option value="1436">Blue Baird</option>
+                        <option value="204">BMW</option>
+                        <option value="1349">Boat</option>
+                        <option value="927">BOBCAT</option>
+                        <option value="1601">Bomag</option>
+                        <option value="1879">Borgward</option>
+                        <option value="1521">BRILLIANCE</option>
+                        <option value="1482">Broom</option>
+                        <option value="205">Bufori</option>
+                        <option value="206">Bugatti</option>
+                        <option value="1910">Buggy</option>
+                        <option value="207">Buick</option>
+                        <option value="1869">Buildings</option>
+                        <option value="1690">Cadillac</option>
+                        <option value="208">Cadillac</option>
+                        <option value="1696">Car</option>
+                        <option value="1694">Car Accessories Parts</option>
+                        <option value="1079">CASE</option>
+                        <option value="1050">CATERPILLAR</option>
+                        <option value="1388">CEMENT MIXER</option>
+                        <option value="1368">CHERY</option>
+                        <option value="209">Chevrolet</option>
+                        <option value="1179">CHINA</option>
+                        <option value="210">Chrysler</option>
+                        <option value="211">Citroen</option>
+                        <option value="1084">Club Car</option>
+                        <option value="1744">CMC</option>
+                        <option value="1293">Concrete</option>
+                        <option value="1417">Crane</option>
+                        <option value="1857">Cricket bat</option>
+                        <option value="1236">cruiser</option>
+                        <option value="1128">Cruz Sand</option>
+                        <option value="1854">Crystal lamps and chandeliers</option>
+                        <option value="1190">Curtain</option>
+                        <option value="1500">Cycle</option>
+                        <option value="213">Daewoo</option>
+                        <option value="1792">DAF</option>
+                        <option value="1794">DAF</option>
+                        <option value="214">Daihatsu</option>
+                        <option value="1123">Databike</option>
+                        <option value="215">DeLorean</option>
+                        <option value="1307">Diesel Tank</option>
+                        <option value="1846">Distinguished plate numbers</option>
+                        <option value="216">Dodge</option>
+                        <option value="1313">DULEVO</option>
+                        <option value="1277">DUMPER</option>
+                        <option value="1279">DYNAPAC</option>
+                        <option value="1629">Electric poles</option>
+                        <option value="1654">Etihad Water And Electricity</option>
+                        <option value="1480">Excavator</option>
+                        <option value="1626">Factory</option>
+                        <option value="1000">FARMING TRACTOR</option>
+                        <option value="217">Ferrari</option>
+                        <option value="1431">Ferriera</option>
+                        <option value="218">Fiat</option>
+                        <option value="1347">Fiberglass Cruiser</option>
+                        <option value="219">Ford</option>
+                        <option value="1212">Forklift</option>
+                        <option value="1487">FOTON</option>
+                        <option value="1324">Fuel</option>
+                        <option value="1826">Gac</option>
+                        <option value="1636">Geely</option>
+                        <option value="1332">GENERATOR</option>
+                        <option value="220">GMC</option>
+                        <option value="1226">Golden Dragon</option>
+                        <option value="943">Golf Car</option>
+                        <option value="925">GP1300R</option>
+                        <option value="1234">GREAT WEEL</option>
+                        <option value="1477">GREATWALL</option>
+                        <option value="1356">Head power</option>
+                        <option value="983">Heavy Mechanich</option>
+                        <option value="1510">Higer</option>
+                        <option value="1082">Hino</option>
+                        <option value="952">HINO</option>
+                        <option value="1288">HITACHI</option>
+                        <option value="221">Honda</option>
+                        <option value="1165">Honda - Suzuki</option>
+                        <option value="1905">HONDA Cb 160</option>
+                        <option value="1904">HONDA-Cb-160</option>
+                        <option value="222">Hummer</option>
+                        <option value="223">Hyundai</option>
+                        <option value="224">Infiniti</option>
+                        <option value="1242">INTERNATIONAL</option>
+                        <option value="1489">Iron Box</option>
+                        <option value="225">Isuzu</option>
+                        <option value="1065">IVECO</option>
+                        <option value="226">Jaguar</option>
+                        <option value="926">JCB</option>
+                        <option value="227">Jeep</option>
+                        <option value="1345">Jet</option>
+                        <option value="1464">JLG</option>
+                        <option value="1421">JMC</option>
+                        <option value="1218">JMC</option>
+                        <option value="1606">KAMA</option>
+                        <option value="1337">KAWASAKI</option>
+                        <option value="1897">KHOLER</option>
+                        <option value="228">Kia</option>
+                        <option value="1019">King Long</option>
+                        <option value="1221">komatsu</option>
+                        <option value="1286">KUMATSU</option>
+                        <option value="229">Lada</option>
+                        <option value="1899">laforza</option>
+                        <option value="230">Lamborghini</option>
+                        <option value="231">Lancia</option>
+                        <option value="232">Land Rover</option>
+                        <option value="1895">LEROY SOMER</option>
+                        <option value="233">Lexus</option>
+                        <option value="1318">LIEBHERR</option>
+                        <option value="979">LIGht Mechanich Device</option>
+                        <option value="234">Lincoln</option>
+                        <option value="1144">Linde</option>
+                        <option value="1824">Liugong</option>
+                        <option value="1256">LOADING CONCRETE MIXER</option>
+                        <option value="1252">Lot of cars</option>
+                        <option value="235">Lotus</option>
+                        <option value="1407">Machine</option>
+                        <option value="1095">Man</option>
+                        <option value="1386">Man Lift</option>
+                        <option value="1290">MANITOU</option>
+                        <option value="236">Maserati</option>
+                        <option value="1265">Massey</option>
+                        <option value="1507">MAXUS</option>
+                        <option value="237">Maybach</option>
+                        <option value="238">Mazda</option>
+                        <option value="239">McLaren</option>
+                        <option value="240">Mercedes-Benz</option>
+                        <option value="241">Mercury</option>
+                        <option value="1836">MG</option>
+                        <option value="242">MINI</option>
+                        <option value="1619">Miscellaneous Equipment</option>
+                        <option value="243">Mitsubishi</option>
+                        <option value="1688">Mix Items</option>
+                        <option value="1616">Mix Vehicle</option>
+                        <option value="1400">MOTOR</option>
+                        <option value="1209">Motor Cycle</option>
+                        <option value="1494">Motorbike</option>
+                        <option value="1920">NAME</option>
+                        <option value="244">Nissan</option>
+                        <option value="1787">Oldsmobile</option>
+                        <option value="245">Opel</option>
+                        <option value="267">Other Make</option>
+                        <option value="246">Oullim</option>
+                        <option value="247">Peugeot</option>
+                        <option value="1750">PHOENIX</option>
+                        <option value="248">Pontiac</option>
+                        <option value="249">Porsche</option>
+                        <option value="1228">Power generator</option>
+                        <option value="1404">Production line</option>
+                        <option value="250">Proton</option>
+                        <option value="253">Range Rover</option>
+                        <option value="251">Renault</option>
+                        <option value="1113">ROAD SWEEPER</option>
+                        <option value="1077">ROAD ROLLER</option>
+                        <option value="252">Rolls Royce</option>
+                        <option value="1813">Rover</option>
+                        <option value="254">Saab</option>
+                        <option value="916">Scania</option>
+                        <option value="212">Scrap</option>
+                        <option value="1502">Scrap</option>
+                        <option value="1419">Sezar</option>
+                        <option value="1075">Sherrington</option>
+                        <option value="1375">SHIPPING COTAINER</option>
+                        <option value="1833">SINOTRUCK</option>
+                        <option value="1269">SKIPLOADER</option>
+                        <option value="256">Skoda</option>
+                        <option value="257">Smart</option>
+                        <option value="1631">Spare Parts</option>
+                        <option value="1848">Special numbers</option>
+                        <option value="258">Speranza</option>
+                        <option value="259">Ssang Yong</option>
+                        <option value="1738">Ssangyong</option>
+                        <option value="1148">STIRLING</option>
+                        <option value="1409">Street broom</option>
+                        <option value="260">Subaru</option>
+                        <option value="1398">SUNWIN</option>
+                        <option value="261">Suzuki</option>
+                        <option value="1202">TADANO</option>
+                        <option value="1243">TANKER</option>
+                        <option value="262">TATA</option>
+                        <option value="1587">TENNANT</option>
+                        <option value="1876">TESLA</option>
+                        <option value="1261">thwaltes</option>
+                        <option value="995">Tmsa</option>
+                        <option value="1485">TOWER</option>
+                        <option value="263">Toyota</option>
+                        <option value="1328">Tractor</option>
+                        <option value="1260">Tractor</option>
+                        <option value="1426">Tractor Yanmar</option>
+                        <option value="1452">Trailer</option>
+                        <option value="1214">Trailer</option>
+                        <option value="1885">Used Oil</option>
+                        <option value="1594">Vehicles and equipment</option>
+                        <option value="1797">VICTORY</option>
+                        <option value="1798">VICTORY</option>
+                        <option value="264">Volkswagen</option>
+                        <option value="265">Volvo</option>
+                        <option value="1342">Welding Machine</option>
+                        <option value="266">Wiesmann</option>
+                        <option value="1806">WOLSELEY</option>
+                        <option value="1719">Wuzhoulong</option>
+                        <option value="1111">XV 10</option>
+                        <option value="939">Yamaha</option>
+                        <option value="1770">Youngman</option>
+                        <option value="1105">YUTONG</option>
+                        <option value="1640">Zhengzhou</option>
+                        <option value="1160">Zhong Tong</option>
+                        <option value="1427">Zoom</option>
+                    </select>
+                </div>
+
+                <div class="mb-2">
+                    <select class="form-select">
+                        <option selected disabled>Model</option>
+                        <option></option>
+                    </select>
+                </div>
+
+                <div class="mb-2 d-flex">
+                    <select class="form-select">
+                        <option selected disabled>Form</option>
+                        <option></option>
+                    </select>
+                    <select class="form-select">
+                        <option selected disabled>To</option>
+                        <option></option>
+                    </select>
+                </div>
+
+                <div class="mb-2">
+                    <input type="text" class="form-control" placeholder="Keyword">
+                </div>
+
+                <div class="mb-2 d-flex">
+                    <input type="text" class="form-control" placeholder="Mileage from">
+                    <input type="text" class="form-control" placeholder="Mileage to">
+                </div>
+
+                <div class="mb-2">
+                    <input type="text" class="form-control" placeholder="Lot#">
+                </div>
+
+                <!-- زر Detailed search -->
+                <button class="btn btn-outline-dark w-100 mt-3 d-flex justify-content-between align-items-center mb-3"
+                    type="button" data-bs-toggle="collapse" data-bs-target="#advancedSearch"
+                    style="border-radius:8px;color: #be181e;border: none;">
+                    <span class="text-light">Detailed search</span>
+                    <i class="fa fa-plus"></i>
+                </button>
+
+                <!-- محتوى التفاصيل -->
+                <div class="collapse mt-3" id="advancedSearch" style="font-size:14px;">
+
+                    <!-- Body Type -->
+                    <div class="mb-3">
+                        <b>Body Type</b>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Electric</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Light</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Four-wheel drive</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Motorcycles</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Commercial</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Accident</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Heavy vehicles</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Scrap Vehicles</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Fewa Scrap items</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Ajman Police</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Luxury cars</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Classic</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Special numbers</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Parts</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Yacht & Boat</div>
+                    </div>
+
+                    <!-- Transmission -->
+                    <div class="mb-3">
+                        <b>Transmission</b>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Manual</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Automatic</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> Unknown</div>
+                    </div>
+
+                    <!-- Administrative fees -->
+                    <div class="mb-3">
+                        <b>Administrative fees</b>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox"> 300 AED administration fee
+                        </div>
+                    </div>
+
+                    <!-- Key -->
+                    <div class="mb-3">
+                        <b>Key</b>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> 1 key</div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox"> 2 keys</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-success w-100">Search</button>
+                <button class="btn btn-success w-100 mt-2">Clear</button>
+
+            </form>
+
+    </div>
+
+    <!-- محتوى الصفحة -->
+    <div class="container">
+        <div class="row text-center mb-3 mt-3">
+            <div class="col-4 position-relative">
+                <a href="favourites.html">
+                     <button class="btn btn-light w-100 position-relative">
+                    Favourites
+                    <span class="badge-notify">3</span>
+                </button>
+                </a>
+            </div>
+            <div class="col-4 position-relative">
+                <a href="my-bids.html">
+                <button class="btn btn-light w-100 position-relative">
+                    My Bids
+                    <span class="badge-notify">2</span>
+                </button>
+                </a>
+            </div>
+            <div class="col-4 position-relative">
+                <a href="online-auction.html">
+                     <button class="btn text-light w-100 position-relative" style="background:#be181e;">
+                    All
+                    <span class="badge-notify bg-light text-danger">10</span>
+                </button>
+                </a>
+            </div>
+        </div>
+        <!-- cars -->
+        <div class="container mt-4">
+            <div class="row g-3 text-center">
+                <div class="col-3 col-md-3">
+                    <div class="auction-types">
+                        <div class="count">3</div>
+                        <div class="icon-container"><img src="Images/light.png" alt="Commercial"></div>
+                        <div class="type">Commercial</div>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3">
+                    <div class="auction-types">
+                        <div class="count">2</div>
+                        <div class="icon-container"><img src="Images/suv.png" alt="Accident"></div>
+                        <div class="type">Accident</div>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3">
+                    <div class="auction-types">
+                        <div class="count">1</div>
+                        <div class="icon-container"><img src="Images/bf6ad8bafd87ffee2e57fd9f6b437efcimages (1).jpg"
+                                alt="Light"></div>
+                        <div class="type">Light</div>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3">
+                    <div class="auction-types">
+                        <div class="count">1</div>
+                        <div class="icon-container"><img src="Images/commer.png" alt="Four-wheel drive"></div>
+                        <div class="type">Four-wheel drive</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Filters -->
+        <div class="row mb-3 mt-3">
+            <div class="col-6"> <button class="btn btn-outline-success w-100" data-bs-toggle="collapse"
+                    data-bs-target="#makesCollapse"> Makes/Models </button>
+                <div class="collapse mt-2" id="makesCollapse">
+
+
+                    <div class="bg-light p-3 rounded shadow-sm">
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="bmw"> <label
+                                class="form-check-label text-success" for="bmw">Mazda (1)</label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="audi"> <label
+                                class="form-check-label text-success" for="audi">BMW (1)</label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="audi"> <label
+                                class="form-check-label text-success" for="audi">Audi (4)</label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="audi"> <label
+                                class="form-check-label text-success" for="audi">Kia (1)</label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="audi"> <label
+                                class="form-check-label text-success" for="audi">Toyota (6)</label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="audi"> <label
+                                class="form-check-label text-success" for="audi">Acura (2)</label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="audi"> <label
+                                class="form-check-label text-success" for="audi">Nissan (4)</label> </div>
+                        <button class="btn text-light btn-sm mt-2" style="background-color: #be181e;">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6"> <button class="btn btn-outline-success w-100" data-bs-toggle="collapse"
+                    data-bs-target="#categoriesCollapse"> Categories </button>
+                <div class="collapse mt-2" id="categoriesCollapse">
+                    <div class="bg-light p-3 rounded shadow-sm">
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="commercial"> <label
+                                class="form-check-label text-success" for="commercial">Commercial (3)</label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="suv"> <label
+                                class="form-check-label text-success" for="suv">Accident (2)</label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="suv"> <label
+                                class="form-check-label text-success" for="suv">Light (1)</label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="suv"> <label
+                                class="form-check-label text-success" for="suv">Four-wheel drive (1)</label> </div>
+                        <button class="btn text-light btn-sm mt-2" style="background-color: #be181e;">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- سيارات -->
+        <!-- Cars Container -->
+        <div class="container mt-4">
+            <div id="carsContainer">
+                <!-- Grid View by default -->
+                <div class="row" id="gridCards">
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm h-100">
+
+                            <!-- صورة السيارة -->
+                            <div class="position-relative">
+                                <a href="cars/Mazda-2000-CC-2023/50372/">
+                                    <img src="https://wat-staging.unifi-me.com/remote/uploaded/50372/thumb/50372_mazda_210.jpeg"
+                                        class="card-img-top" alt="Mazda 2000 CC 2023">
+                                </a>
+                                <div class="position-absolute bottom-0 start-0 w-100  text-white text-center py-1"
+                                    style="background: rgba(0, 0, 0, 0.7);">
+                                    Mazda 2000 CC 2023
+                                </div>
+                            </div>
+
+                            <!-- تفاصيل -->
+                            <div class="card-body">
+                                <div class="row mb-1">
+                                    <div class="col-6 fw-bold">Time Remaining :</div>
+                                    <div class="col-6 text-danger">0D 0H 00M 00S</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-6 fw-bold">End Time :</div>
+                                    <div class="col-6 text-muted">10:45 | 31.12.2025</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-6 fw-bold">#ID:</div>
+                                    <div class="col-6 text-success">50372</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-6 fw-bold">Price:</div>
+                                    <div class="col-6 text-primary">3,200</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-6 fw-bold">Mileage:</div>
+                                    <div class="col-6">N/A</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6 fw-bold">Bids#:</div>
+                                    <div class="col-6">
+                                        <span class="badge bg-info">1</span>
+                                    </div>
+                                </div>
+                                <div class="text-end">
+                                    <a href="details-car.html" class="text-decoration-none small text-muted">View
+                                        Details</a>
+                                </div>
+                            </div>
+
+                            <!-- أزرار -->
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <div>
+                                    <!-- زر القلب -->
+                                    <button type="button" class="btn btn-sm me-2 heart-btn">
+                                        <i class="fa fa-heart fs-4"></i>
+                                    </button>
+
+                                    <!-- زر الرعد -->
+                                    <button type="button" class="btn btn-sm me-2 bolt-btn">
+                                        <i class="fa-solid fa-bolt-lightning fs-4"></i>
+                                    </button>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <select class="form-select form-select-sm me-2" style="width: auto;">
+                                        <option value="">Select Bid</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="500">500</option>
+                                        <option value="1000">1,000</option>
+                                        <option value="3000">3,000</option>
+                                        <option value="5000">5,000</option>
+                                    </select>
+                                    <button class="btn btn-sm text-light" style="background-color: #be181e;">Bid
+                                        Now</button>
+                                </div>
+                            </div>
+                            <!-- Auto Bid Form (مخفي في البداية) -->
+                            <div class="auto-bid-container text-center mt-2 d-none">
+                                <input type="number" class="form-control d-inline-block w-50 me-2 auto-bid-enter"
+                                    placeholder="Auto Bid Amount">
+                                <button class="btn btn-outline-success btn-sm auto-bid">Auto Bid</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- تكرر بطاقات Grid هنا -->
+
+                </div>
+
+                <!-- List View -->
+                <div class="row d-none" id="listCards">
+                    <div class="col-12 mb-3">
+                        <div class="card shadow-sm">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <img src="Images/light.png" class="img-fluid rounded-start" alt="Car">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Toyota Land Cruiser 2008</h5>
+                                        <p class="card-text mb-1"><strong>Lot No:</strong> 50150</p>
+                                        <p class="card-text mb-1"><strong>Price:</strong> $90,000</p>
+                                        <p class="card-text mb-1"><strong>Mileage:</strong> 416,664 KM</p>
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <button class="btn btn-outline-danger btn-sm">Sold</button>
+                                                <button class="btn btn-outline-danger btn-sm">Bid Now</button>
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-heart fs-4 me-2 text-danger"></i>
+                                                <i class="fa-solid fa-bolt-lightning fs-4 text-warning"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- سيارة ثانية -->
+                    <div class="col-12 mb-3">
+                        <div class="card shadow-sm">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <img src="Images/suv.png" class="img-fluid rounded-start" alt="Car">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nissan Patrol 2015</h5>
+                                        <p class="card-text mb-1"><strong>Lot No:</strong> 50151</p>
+                                        <p class="card-text mb-1"><strong>Price:</strong> $95,000</p>
+                                        <p class="card-text mb-1"><strong>Mileage:</strong> 150,000 KM</p>
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <button class="btn btn-outline-success btn-sm">Highest</button>
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-heart fs-4 me-2 text-danger"></i>
+                                                <i class="fa-solid fa-bolt-lightning fs-4 text-warning"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- /List View -->
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled"> <a class="page-link">Previous</a> </li>
+            <li class="page-item active"><a class="page-link bg-success" href="#">1</a></li>
+            <li class="page-item"><a class="page-link text-success" href="#">2</a></li>
+            <li class="page-item"><a class="page-link text-success" href="#">3</a></li>
+            <li class="page-item"> <a class="page-link text-success" href="#">Next</a> </li>
+        </ul>
+    </nav>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="nav-item">
+            <a href="index.html">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="settings.html">
+                <i class="fa fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <div class="dropdown">
+                <button class="dropdown-toggle" id="btnGroupDrop1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="btnGroupDrop1">
+                    <li><a class="dropdown-item" href="requested-services.html">Requested Services</a></li>
+                    <li><a class="dropdown-item" href="purchases.html">Purchases</a></li>
+                    <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                    <li><a class="dropdown-item" href="unsold-vehicles.html">Unsold Vehicles</a></li>
+                    <li><a class="dropdown-item" href="invoice-list.html">Invoice List</a></li>
+                    <li><a class="dropdown-item" href="payment-list.html">Payment List</a></li>
+                    <li><a class="dropdown-item" href="messages.html">Messages</a></li>
+                </ul>
+            </div>
+            <span>My Account</span>
+        </div>
+    </footer>
+
+
+    <script>
+        const gridViewBtn = document.getElementById("gridView");
+        const listViewBtn = document.getElementById("listView");
+        const gridCards = document.getElementById("gridCards");
+        const listCards = document.getElementById("listCards");
+
+        gridViewBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            gridCards.classList.remove("d-none");
+            listCards.classList.add("d-none");
+            gridViewBtn.classList.add("active");
+            listViewBtn.classList.remove("active");
+        });
+
+        listViewBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            listCards.classList.remove("d-none");
+            gridCards.classList.add("d-none");
+            listViewBtn.classList.add("active");
+            gridViewBtn.classList.remove("active");
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // فتح/إغلاق الـ Sidebar
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+
+        // فتح و إغلاق عند الضغط على الزر
+        toggleBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // حتى ما يروح على document
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-300px";
+            } else {
+                sidebar.style.left = "0px";
+            }
+        });
+
+        // إغلاق عند الضغط خارج الـ sidebar
+        document.addEventListener("click", (e) => {
+            if (sidebar.style.left === "0px" && !sidebar.contains(e.target) && e.target !== toggleBtn) {
+                sidebar.style.left = "-300px";
+            }
+        });
+    </script>
+
+    <script>
+        // قلب - تغيير اللون عند الضغط
+        document.querySelectorAll(".heart-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const icon = btn.querySelector("i");
+                icon.classList.toggle("text-danger"); // يضيف/يحذف اللون الأحمر
+            });
+        });
+
+        // رعد - إظهار/إخفاء الفورم
+        document.querySelectorAll(".bolt-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const container = btn.closest(".card-footer").nextElementSibling;
+                container.classList.toggle("d-none");
+                  const icon = btn.querySelector("i");
+                    icon.classList.toggle("text-warning");
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>

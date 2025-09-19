@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/all.css">
+  <!-- css -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .app-footer .nav-item a,
+    .app-footer .nav-item button {
+      color: #298b61;
+    }
+
+
+    .modal-content {
+      border-radius: 15px;
+    }
+
+    .reply-box {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- Header -->
+  <header class="site-header fixed-top">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center justify-content-between">
+
+        <!-- Logo -->
+        <div class="logo">
+          <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button class="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+          aria-label="Open menu">
+          <i class="fa-solid fa-bars text-light fa-lg"></i>
+        </button>
+
+        <!-- Desktop Menu -->
+        <nav class="desktop-menu d-none d-md-flex gap-4">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="online-auction.html" class="nav-link">Online Auction</a>
+          <a href="silent-auction.html" class="nav-link">Silent Auction</a>
+          <a href="auction-Guide.html" class="nav-link">Auction Guide</a>
+          <a href="about.html" class="nav-link">About Wataneya</a>
+          <a href="contactUs.html" class="nav-link">Contact Us</a>
+          <a href="login.html" class="btn btn-sm btn-dark text-light rounded px-3">Login | Register Now</a>
+          <button class="btn btn-dark">العربية</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Offcanvas Menu -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title fw-bold" id="offcanvasMenuLabel">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="offcanvas-list list-unstyled p-0 m-0">
+        <li class="menu-item"><a href="index.html" class="menu-link"><i class="fa fa-home icon"></i><span
+              class="label">Home</span></a></li>
+        <li class="menu-item"><a href="online-auction.html" class="menu-link"><i class="fa fa-gavel icon"></i><span
+              class="label">Online Auction</span></a></li>
+        <li class="menu-item"><a href="silent-auction.html" class="menu-link"><i class="fa fa-gavel icon"></i><span
+              class="label">Silent Auction</span></a></li>
+        <li class="menu-item"><a href="auction-Guide.html" class="menu-link"><i class="fa fa-book icon"></i><span
+              class="label">Auction Guide</span></a></li>
+        <li class="menu-item"><a href="about.html" class="menu-link"><i class="fa fa-info-circle icon"></i><span
+              class="label">About Wataneya</span></a></li>
+        <li class="menu-item"><a href="contactUs.html" class="menu-link"><i class="fa fa-address-book icon"></i><span
+              class="label">Contact Us</span></a></li>
+        <li class="menu-item"><a href="login.html" class="menu-link"><i class="fa fa-sign-in-alt icon"></i><span
+              class="label">Login</span></a></li>
+        <li class="menu-item"><a href="register.html" class="menu-link"><i class="fa fa-user-plus icon"></i><span
+              class="label">Register Now</span></a></li>
+        <li class="menu-item"><a href="#" class="menu-link"><i class="fa fa-language icon"></i><span
+              class="label">Language</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- table messages -->
+  <div class="container mt-5 mb-5 pt-3">
+    <h2 class="mb-3 text-center fw-bold">Messages</h2>
+
+    <div class="table-container">
+      <table class="table table-hover w-100 table-striped">
+        <thead class="table-light">
+          <tr>
+            <th>Subject</th>
+            <th>Department</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center" id="pagination">
+        <li class="page-item"><a class="page-link" href="#" onclick="prevPage()">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#" onclick="nextPage()">Next</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Modal Message -->
+  <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-lg">
+        <div class="modal-header text-white" style="background-color: #298b61;">
+          <h5 class="modal-title" id="messageModalLabel">Message Details</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Subject:</strong> <span id="modalSubject"></span></p>
+          <p><strong>Department:</strong> <span id="modalDept"></span></p>
+          <p><strong>Date:</strong> <span id="modalDate"></span></p>
+          <hr>
+          <p><strong>Message:</strong></p>
+          <p id="modalContent" class="bg-light p-3 rounded">hellow</p>
+          <div class="text-end">
+            <button class="btn text-light" style="background-color: #298b61;" id="replyBtn">Reply</button>
+          </div>
+          <div class="reply-box d-none">
+            <textarea class="form-control mb-3" rows="3" placeholder="Type your reply..."></textarea>
+            <div class="d-flex justify-content-end gap-2">
+              <button class="btn btn-secondary btn-sm" id="cancelReply">Cancel</button>
+              <button class="btn btn-success btn-sm">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="nav-item">
+      <a href="index.html">
+        <i class="fa fa-home"></i>
+        <span>Home</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="settings.html">
+        <i class="fa fa-cog"></i>
+        <span>Settings</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <div class="dropdown">
+        <button class="dropdown-toggle" id="btnGroupDrop1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-circle-user fa-2x"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="btnGroupDrop1">
+          <li><a class="dropdown-item" href="requested-services.html">Requested Services</a></li>
+          <li><a class="dropdown-item" href="purchases.html">Purchases</a></li>
+          <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+          <li><a class="dropdown-item" href="unsold-vehicles.html">Unsold Vehicles</a></li>
+          <li><a class="dropdown-item" href="invoice-list.html">Invoice List</a></li>
+          <li><a class="dropdown-item" href="payment-list.html">Payment List</a></li>
+          <li><a class="dropdown-item active" href="messages.html">Messages</a></li>
+        </ul>
+      </div>
+      <span>My Account</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // بيانات الرسائل
+    const messagesData = [
+      { subject: "Buyer Change", dept: "Operation", date: "1/16/2025, 12:16:37 PM" },
+      { subject: "Buyer Change", dept: "Operation", date: "1/16/2025, 5:00:43 AM" },
+      { subject: "Buyer Change", dept: "Accounatant", date: "12/25/2024, 3:05:47 AM" },
+      { subject: "Buyer Change", dept: "", date: "12/23/2024, 9:12:02 PM" },
+      { subject: "Buyer Change", dept: "Operation", date: "12/23/2024, 9:10:45 PM" },
+      { subject: "Buyer Change", dept: "Operation", date: "12/23/2024, 7:17:37 PM" },
+      { subject: "Buyer Change", dept: "Operation", date: "12/23/2024, 7:17:01 PM" },
+      { subject: "Buyer Change", dept: "Accounatant", date: "12/23/2024, 3:34:40 PM" }
+    ];
+
+    const rowsPerPage = 20;
+    let currentPage = 1;
+
+    function renderTable() {
+      const tbody = document.getElementById("tableBody");
+      tbody.innerHTML = "";
+
+      const start = (currentPage - 1) * rowsPerPage;
+      const end = start + rowsPerPage;
+      const pageData = messagesData.slice(start, end);
+
+      pageData.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.style.cursor = "pointer";
+        tr.innerHTML = `
+          <td>${row.subject}</td>
+          <td>${row.dept || '-'}</td>
+          <td>${row.date}</td>
+        `;
+        tr.onclick = () => openMessage(row);
+        tbody.appendChild(tr);
+      });
+    }
+
+    function openMessage(row) {
+      document.getElementById("modalSubject").innerText = row.subject;
+      document.getElementById("modalDept").innerText = row.dept || "-";
+      document.getElementById("modalDate").innerText = row.date;
+      new bootstrap.Modal(document.getElementById("messageModal")).show();
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        renderTable();
+      }
+    }
+
+    function nextPage() {
+      if (currentPage * rowsPerPage < messagesData.length) {
+        currentPage++;
+        renderTable();
+      }
+    }
+
+    // Reply toggle
+    document.getElementById("replyBtn").addEventListener("click", () => {
+      document.querySelector(".reply-box").classList.remove("d-none");
+    });
+
+    document.getElementById("cancelReply").addEventListener("click", () => {
+      document.querySelector(".reply-box").classList.add("d-none");
+    });
+
+    // أول عرض
+    renderTable();
+  </script>
+</body>
+
+</html>

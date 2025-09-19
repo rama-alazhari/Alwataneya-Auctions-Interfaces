@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .car-header {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .car-header h2 {
+            font-weight: bold;
+        }
+
+        .car-image {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .section-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-card h5 {
+            border-bottom: 2px solid #eee;
+            padding: 8px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            background-color: #be181e;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .vehicle-note {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .progress {
+            height: 8px;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #0d6efd;
+        }
+
+        .car-header {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .car-image {
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .heart-btn.active i {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header fixed-top">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between">
+
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+                    aria-label="Open menu">
+                    <i class="fa-solid fa-bars text-light fa-lg"></i>
+                </button>
+
+                <!-- Desktop Menu -->
+                <nav class="desktop-menu d-none d-md-flex gap-4">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="online-auction.html" class="nav-link">Online Auction</a>
+                    <a href="silent-auction.html" class="nav-link">Silent Auction</a>
+                    <a href="auction-Guide.html" class="nav-link">Auction Guide</a>
+                    <a href="about.html" class="nav-link">About Wataneya</a>
+                    <a href="contactUs.html" class="nav-link">Contact Us</a>
+                    <a href="login.html" class="btn btn-sm btn-dark text-light rounded px-3">Login | Register Now</a>
+                    <button class="btn btn-dark">العربية</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-bold" id="offcanvasMenuLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="offcanvas-list list-unstyled p-0 m-0">
+                <li class="menu-item"><a href="index.html" class="menu-link"><i class="fa fa-home icon"></i><span
+                            class="label">Home</span></a></li>
+                <li class="menu-item"><a href="online-auction.html" class="menu-link"><i
+                            class="fa fa-gavel icon"></i><span class="label">Online Auction</span></a></li>
+                <li class="menu-item"><a href="silent-auction.html" class="menu-link"><i
+                            class="fa fa-gavel icon"></i><span class="label">Silent Auction</span></a></li>
+                <li class="menu-item"><a href="auction-Guide.html" class="menu-link"><i
+                            class="fa fa-book icon"></i><span class="label">Auction Guide</span></a></li>
+                <li class="menu-item"><a href="about.html" class="menu-link"><i class="fa fa-info-circle icon"></i><span
+                            class="label">About Wataneya</span></a></li>
+                <li class="menu-item"><a href="contactUs.html" class="menu-link"><i
+                            class="fa fa-address-book icon"></i><span class="label">Contact Us</span></a></li>
+                <li class="menu-item"><a href="login.html" class="menu-link"><i class="fa fa-sign-in-alt icon"></i><span
+                            class="label">Login</span></a></li>
+                <li class="menu-item"><a href="register.html" class="menu-link"><i
+                            class="fa fa-user-plus icon"></i><span class="label">Register Now</span></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><i class="fa fa-language icon"></i><span
+                            class="label">Language</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- page details -->
+    <section class="mb-5">
+        <div class="container my-4">
+
+            <div class="car-header container py-3">
+                <div class="row align-items-center g-3">
+                    <!-- صورة السيارة -->
+                    <div class="col-12 col-md-4 text-center">
+                        <img src="Images/al-wataneya-auction-1678164094022.jpg"
+                            class="img-fluid rounded shadow-sm car-image" alt="Toyota Land Cruiser 2008">
+                    </div>
+
+                    <!-- تفاصيل السيارة -->
+                    <div class="col-12 col-md-8">
+                        <h4 class="fw-bold">Toyota Land Cruiser 2008</h4>
+                        <p class="mb-1"><strong>Lot No:</strong> 50150</p>
+                        <p class="mb-1"><strong>Price:</strong> <span class="text-success fw-bold">45,000 AED</span></p>
+                        <p class="mb-3"><strong>End Time:</strong> 15:25 | 11.04.2026</p>
+
+                        <!-- الأزرار -->
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <!-- زر القلب -->
+                            <button type="button" class="btn btn-outline-danger btn-sm heart-btn">
+                                <i class="fa fa-heart"></i>
+                            </button>
+
+                            <!-- زر الرعد -->
+                            <button type="button" class="btn btn-outline-warning btn-sm bolt-btn">
+                                <i class="fa fa-bolt"></i>
+                            </button>
+
+                            <!-- زر التقرير الفني -->
+                            <a href="#" download id="technical-report" class="btn btn-outline-secondary btn-sm">
+                                Technical Report
+                            </a>
+
+                            <!-- زر Services -->
+                            <button id="show_service_form" class="btn btn-success btn-sm">
+                                Services
+                            </button>
+                        </div>
+
+                        <!-- Auto Bid Form (مخفي) -->
+                        <div class="auto-bid-container mt-2 d-none">
+                            <div class="input-group">
+                                <input type="number" class="form-control auto-bid-enter" placeholder="Auto Bid Amount">
+                                <button class="btn btn-outline-success auto-bid">Auto Bid</button>
+                            </div>
+                        </div>
+
+                        <!-- Service Form (مخفي) -->
+                        <div id="service_form_container" class="border rounded shadow-sm p-3 mt-3 bg-light d-none">
+                            <form id="request_form">
+                                <!-- اختيار الخدمة -->
+                                <div class="mb-3">
+                                    <label class="form-label">Select Service</label>
+                                    <select name="service" class="form-control" id="service_select">
+                                        <option value="">Select a service</option>
+                                        <option value="71">Car Inspection</option>
+                                    </select>
+                                </div>
+
+                                <!-- الحقول الجديدة (تظهر فقط عند Car Inspection) -->
+                                <div id="new_fields" class="d-none">
+                                    <div class="form-check mb-2">
+                                        <input type="radio" name="subscription" value="Basic" class="form-check-input">
+                                        <label class="form-check-label">
+                                            <a href="../../../car_insp.php" target="_blank">Basic - 250 AED</a>
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input type="radio" name="subscription" value="Comprehensive"
+                                            class="form-check-input">
+                                        <label class="form-check-label">
+                                            <a href="../../../car_insp_comp.php" target="_blank">Comprehensive - 500
+                                                AED</a>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- الحقول الافتراضية -->
+                                <div id="default_fields">
+                                    <div class="row g-2 mt-3">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-success w-100">Submit</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button id="close_default" type="button"
+                                                class="btn btn-danger w-100">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Basic Info -->
+        <div class="section-card">
+            <div class="row text-center">
+                <div class="item col-md-2 col-6 mb-3">
+                    <i class="fa-solid fa-location-dot fa-2x text-primary mb-2"></i>
+                    <p class="text-secondary">Location</p>
+                    <div>Abu Dhabi</div>
+                </div>
+                <div class="item col-md-2 col-6 mb-3">
+                    <i class="fa-solid fa-calendar fa-2x text-success mb-2"></i>
+                    <p class="text-secondary"> Model Year</p>
+                    <div>2008</div>
+                </div>
+                <div class="item col-md-2 col-6 mb-3">
+                    <i class="fa-solid fa-gas-pump fa-2x text-danger mb-2"></i>
+                    <p class="text-secondary"> Fuel Type</p>
+                    <div>Gasoline</div>
+                </div>
+                <div class="item col-md-2 col-6 mb-3">
+                    <i class="fa-solid fa-gear fa-2x text-warning mb-2"></i>
+                    <p class="text-secondary"> Transmission</p>
+                    <div>Manual</div>
+                </div>
+                <div class="item col-md-2 col-6 mb-3">
+                    <i class="fa-solid fa-palette fa-2x text-secondary mb-2"></i>
+                    <p class="text-secondary"> Color</p>
+                    <div>Beige</div>
+                </div>
+                <div class="item col-md-2 col-6 mb-3">
+                    <i class="fa-solid fa-car-side fa-2x text-info mb-2"></i>
+                    <p class="text-secondary"> Number of Doors</p>
+                    <div>2 Doors</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Car Location -->
+        <div class="section-card">
+            <h5>Car Location</h5>
+            <div class="row">
+                <div class="col-12">
+                    <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
+                        <iframe src="https://www.google.com/maps?q=24.3524632,54.4833746&hl=es;z=14&amp;output=embed"
+                            style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Features -->
+        <div class="section-card">
+            <h5>Features</h5>
+            <div class="row">
+                <table class="table table-sm table-striped">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Milage</th>
+                            <td>416664 KM</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Chassis no</th>
+                            <td>*************5842</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tax Added</th>
+                            <td>This vehicle is not subject to VAT</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Administrative fees</th>
+                            <td> 300 AED administration fee will be applied to the final auction price,</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ownership</th>
+                            <td> Abu Dhabi</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Documents</th>
+                            <td> After three week of payment </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">General Specification</th>
+                            <td> Power steering, Air conditioner</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Type of wheels</th>
+                            <td> 4 Wheel Drive</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Media</th>
+                            <td> AM/FM Radio</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Location</th>
+                            <td> Abu Dhabi</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Year Making</th>
+                            <td> 2008</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fuel Type</th>
+                            <td> Gasoline</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Horse Power</th>
+                            <td> 200 - 300 HP</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Transmission</th>
+                            <td> Manual </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Color</th>
+                            <td> Beige</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">No of Cylinders</th>
+                            <td> 6</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Doors</th>
+                            <td> 2</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Body Type</th>
+                            <td> Four-wheel drive</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+        <!-- Vehicle Note -->
+        <div class="section-card">
+            <h5>Vehicle Note</h5>
+            <p class="vehicle-note">
+                Please note that the Sales completion procedure is subjected to management approval which may take 2-21
+                working days.
+                There will be an additional charge of Dhs: 150 if a complete vehicle technical inspection was done.
+                Vehicle sold as a current condition as per our policy. A fine of 20 Dhs on light vehicles and 50 Dhs on
+                heavy vehicles and buses
+                will be calculated in the event of delayed vehicle withdrawal within seven days after approval.
+                There will be an additional charges of Dhs: 300 as administration fee on each item.
+            </p>
+        </div>
+
+        <!-- Condition Analysis -->
+        <div class="section-card">
+            <h5>Condition Analysis</h5>
+            <p><strong>This vehicle has a Low mileage at:</strong> 416,664 KM</p>
+            <div class="d-flex justify-content-between mb-1">
+                <span>Low KM</span>
+                <span>Average KM</span>
+                <span>High KM</span>
+            </div>
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"></div>
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50"></div>
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25"></div>
+            </div>
+            <small class="text-muted">Average km based on 30,000 km/year</small>
+        </div>
+
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="nav-item">
+            <a href="index.html">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="settings.html">
+                <i class="fa fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <div class="dropdown">
+                <button class="dropdown-toggle" id="btnGroupDrop1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="btnGroupDrop1">
+                    <li><a class="dropdown-item" href="requested-services.html">Requested Services</a></li>
+                    <li><a class="dropdown-item" href="purchases.html">Purchases</a></li>
+                    <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                    <li><a class="dropdown-item" href="unsold-vehicles.html">Unsold Vehicles</a></li>
+                    <li><a class="dropdown-item" href="invoice-list.html">Invoice List</a></li>
+                    <li><a class="dropdown-item" href="payment-list.html">Payment List</a></li>
+                    <li><a class="dropdown-item" href="messages.html">Messages</a></li>
+                </ul>
+            </div>
+            <span>My Account</span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // قلب أحمر عند الضغط
+        document.querySelector('.heart-btn').addEventListener('click', function () {
+            this.classList.toggle('active');
+        });
+
+        // إظهار/إخفاء Auto Bid
+        document.querySelector('.bolt-btn').addEventListener('click', function () {
+            document.querySelector('.auto-bid-container').classList.toggle('d-none');
+        });
+
+        // إظهار فورم Services
+        document.getElementById('show_service_form').addEventListener('click', function () {
+            document.getElementById('service_form_container').classList.toggle('d-none');
+        });
+
+        // إغلاق الفورم
+        document.getElementById('close_default').addEventListener('click', function () {
+            document.getElementById('service_form_container').classList.add('d-none');
+        });
+        document.getElementById('close_new').addEventListener('click', function () {
+            document.getElementById('service_form_container').classList.add('d-none');
+        });
+    </script>
+    <script>
+        const serviceSelect = document.getElementById('service_select');
+        const newFields = document.getElementById('new_fields');
+
+        serviceSelect.addEventListener('change', function () {
+            if (this.value === "71") {
+                newFields.classList.remove('d-none'); // أظهر خيارات Car Inspection
+            } else {
+                newFields.classList.add('d-none'); // اخفيها إذا الخيار مو Car Inspection
+            }
+        });
+    </script>
+</body>
+
+</html>

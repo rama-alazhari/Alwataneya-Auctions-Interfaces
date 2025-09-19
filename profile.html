@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile </title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/all.css">
+  <!-- css -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+     .image{
+      background-image: url(Images/laptop.jpg);
+      background-attachment: fixed;
+      background-size: cover;
+      height: 2300px;
+    }
+    .overlay{
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      margin: auto;
+    }
+     .app-footer .nav-item a,
+  .app-footer .nav-item button {
+  color: #298b61;
+  }
+    .green {
+      background-color: #298b61 !important;
+    }
+
+    .red {
+      background-color: #be181e !important;
+    }
+  </style>
+
+ 
+</head>
+
+<body style="background:#f8f9fa">
+
+  <!-- Header -->
+  <header class="site-header fixed-top">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center justify-content-between">
+
+        <!-- Logo -->
+        <div class="logo">
+          <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button class="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+          aria-label="Open menu">
+          <i class="fa-solid fa-bars text-light fa-lg"></i>
+        </button>
+
+        <!-- Desktop Menu -->
+        <nav class="desktop-menu d-none d-md-flex gap-4">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="online-auction.html" class="nav-link">Online Auction</a>
+          <a href="silent-auction.html" class="nav-link">Silent Auction</a>
+          <a href="auction-Guide.html" class="nav-link">Auction Guide</a>
+          <a href="about.html" class="nav-link">About Wataneya</a>
+          <a href="contactUs.html" class="nav-link">Contact Us</a>
+          <a href="login.html" class="btn btn-sm btn-dark text-light rounded px-3">Login | Register Now</a>
+          <button class="btn btn-dark">العربية</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Offcanvas Menu -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title fw-bold" id="offcanvasMenuLabel">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="offcanvas-list list-unstyled p-0 m-0">
+        <li class="menu-item"><a href="index.html" class="menu-link"><i class="fa fa-home icon"></i><span
+              class="label">Home</span></a></li>
+        <li class="menu-item"><a href="online-auction.html" class="menu-link"><i class="fa fa-gavel icon"></i><span
+              class="label">Online Auction</span></a></li>
+        <li class="menu-item"><a href="silent-auction.html" class="menu-link"><i class="fa fa-gavel icon"></i><span
+              class="label">Silent Auction</span></a></li>
+        <li class="menu-item"><a href="auction-Guide.html" class="menu-link"><i class="fa fa-book icon"></i><span
+              class="label">Auction Guide</span></a></li>
+        <li class="menu-item"><a href="about.html" class="menu-link"><i class="fa fa-info-circle icon"></i><span
+              class="label">About Wataneya</span></a></li>
+        <li class="menu-item"><a href="contactUs.html" class="menu-link"><i class="fa fa-address-book icon"></i><span
+              class="label">Contact Us</span></a></li>
+        <li class="menu-item"><a href="login.html" class="menu-link"><i class="fa fa-sign-in-alt icon"></i><span
+              class="label">Login</span></a></li>
+        <li class="menu-item"><a href="register.html" class="menu-link"><i class="fa fa-user-plus icon"></i><span
+              class="label">Register Now</span></a></li>
+        <li class="menu-item"><a href="#" class="menu-link"><i class="fa fa-language icon"></i><span
+              class="label">Language</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+   <div class="image">
+<div class="overlay">
+  <section class="mb-5 pb-1">
+    <div class="container mt-5 pt-2 mb-5">
+      <!-- Form Box -->
+      <div class="text-light p-4 p-md-5 rounded shadow" style="max-width: 700px; margin:auto;background: #292929d9;">
+        <form>
+
+          <!-- Full Name -->
+          <div class="mb-3">
+            <label class="form-label">Full name in English</label>
+            <input type="text" class="form-control" />
+          </div>
+
+          <!-- Username -->
+          <div class="mb-3">
+            <label class="form-label">User name</label>
+            <input type="text" class="form-control" />
+          </div>
+
+          <!-- Note -->
+          <div class="mb-3">
+            <p class="text-light red p-1">*NOTE* If you want to change your password use the three fields below.
+              Otherwise leave them blank.</p>
+          </div>
+
+          <!-- Current Password -->
+          <div class="mb-3">
+            <label class="form-label">Current Password</label>
+            <input type="password" class="form-control" placeholder="Current Password" />
+          </div>
+
+          <!-- New Password -->
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Password" />
+          </div>
+
+          <!-- Repeat Password -->
+          <div class="mb-3">
+            <label class="form-label">Please repeat your password</label>
+            <input type="password" class="form-control" placeholder="Please repeat your password" />
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label">Your email address</label>
+            <input type="email" class="form-control" placeholder="Enter Email" />
+          </div>
+
+          <!-- DOB -->
+          <div class="mb-3">
+            <label class="form-label">Date of Birth (dd.mm.yyyy)</label>
+            <input type="date" class="form-control" />
+          </div>
+
+          <!-- Address -->
+          <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" />
+          </div>
+
+          <!-- City -->
+          <div class="mb-3">
+            <label class="form-label">City</label>
+            <input type="text" placeholder="City" class="form-control" />
+          </div>
+
+          <!-- State -->
+          <div class="mb-3">
+            <label class="form-label">State/Province</label>
+            <input type="text" placeholder="State/Province" class="form-control" />
+          </div>
+
+          <!-- Zip -->
+          <div class="mb-3">
+            <label class="form-label">Zip/Postal code</label>
+            <input type="text" placeholder="Zip/Postal code" class="form-control" />
+          </div>
+
+          <!-- Country -->
+          <div class="mb-3">
+            <label class="form-label">Country</label>
+            <select class="form-control" required>
+              <option hidden>Select Country</option>
+              <!-- كل الدول -->
+              <option>Afghanistan</option>
+              <option>Albania</option>
+              <option>Algeria</option>
+              <option>Andorra</option>
+              <option>Angola</option>
+              <option>Antigua and Barbuda</option>
+              <option>Argentina</option>
+              <option>Armenia</option>
+              <option>Australia</option>
+              <option>Austria</option>
+              <option>Azerbaijan</option>
+              <option>Bahamas</option>
+              <option>Bahrain</option>
+              <option>Bangladesh</option>
+              <option>Barbados</option>
+              <option>Belarus</option>
+              <option>Belgium</option>
+              <option>Belize</option>
+              <option>Benin</option>
+              <option>Bhutan</option>
+              <option>Bolivia</option>
+              <option>Bosnia and Herzegovina</option>
+              <option>Botswana</option>
+              <option>Brazil</option>
+              <option>Brunei</option>
+              <option>Bulgaria</option>
+              <option>Burkina Faso</option>
+              <option>Burundi</option>
+              <option>Cabo Verde</option>
+              <option>Cambodia</option>
+              <option>Cameroon</option>
+              <option>Canada</option>
+              <option>Central African Republic</option>
+              <option>Chad</option>
+              <option>Chile</option>
+              <option>China</option>
+              <option>Colombia</option>
+              <option>Comoros</option>
+              <option>Congo (Congo-Brazzaville)</option>
+              <option>Costa Rica</option>
+              <option>Croatia</option>
+              <option>Cuba</option>
+              <option>Cyprus</option>
+              <option>Czechia (Czech Republic)</option>
+              <option>Democratic Republic of the Congo</option>
+              <option>Denmark</option>
+              <option>Djibouti</option>
+              <option>Dominica</option>
+              <option>Dominican Republic</option>
+              <option>Ecuador</option>
+              <option>Egypt</option>
+              <option>El Salvador</option>
+              <option>Equatorial Guinea</option>
+              <option>Eritrea</option>
+              <option>Estonia</option>
+              <option>Eswatini</option>
+              <option>Ethiopia</option>
+              <option>Fiji</option>
+              <option>Finland</option>
+              <option>France</option>
+              <option>Gabon</option>
+              <option>Gambia</option>
+              <option>Georgia</option>
+              <option>Germany</option>
+              <option>Ghana</option>
+              <option>Greece</option>
+              <option>Grenada</option>
+              <option>Guatemala</option>
+              <option>Guinea</option>
+              <option>Guinea-Bissau</option>
+              <option>Guyana</option>
+              <option>Haiti</option>
+              <option>Holy See</option>
+              <option>Honduras</option>
+              <option>Hungary</option>
+              <option>Iceland</option>
+              <option>India</option>
+              <option>Indonesia</option>
+              <option>Iran</option>
+              <option>Iraq</option>
+              <option>Ireland</option>
+              <option>Israel</option>
+              <option>Italy</option>
+              <option>Jamaica</option>
+              <option>Japan</option>
+              <option>Jordan</option>
+              <option>Kazakhstan</option>
+              <option>Kenya</option>
+              <option>Kiribati</option>
+              <option>Kuwait</option>
+              <option>Kyrgyzstan</option>
+              <option>Laos</option>
+              <option>Latvia</option>
+              <option>Lebanon</option>
+              <option>Lesotho</option>
+              <option>Liberia</option>
+              <option>Libya</option>
+              <option>Liechtenstein</option>
+              <option>Lithuania</option>
+              <option>Luxembourg</option>
+              <option>Madagascar</option>
+              <option>Malawi</option>
+              <option>Malaysia</option>
+              <option>Maldives</option>
+              <option>Mali</option>
+              <option>Malta</option>
+              <option>Marshall Islands</option>
+              <option>Mauritania</option>
+              <option>Mauritius</option>
+              <option>Mexico</option>
+              <option>Micronesia</option>
+              <option>Moldova</option>
+              <option>Monaco</option>
+              <option>Mongolia</option>
+              <option>Montenegro</option>
+              <option>Morocco</option>
+              <option>Mozambique</option>
+              <option>Myanmar (Burma)</option>
+              <option>Namibia</option>
+              <option>Nauru</option>
+              <option>Nepal</option>
+              <option>Netherlands</option>
+              <option>New Zealand</option>
+              <option>Nicaragua</option>
+              <option>Niger</option>
+              <option>Nigeria</option>
+              <option>North Korea</option>
+              <option>North Macedonia</option>
+              <option>Norway</option>
+              <option>Oman</option>
+              <option>Pakistan</option>
+              <option>Palau</option>
+              <option>Palestine State</option>
+              <option>Panama</option>
+              <option>Papua New Guinea</option>
+              <option>Paraguay</option>
+              <option>Peru</option>
+              <option>Philippines</option>
+              <option>Poland</option>
+              <option>Portugal</option>
+              <option>Qatar</option>
+              <option>Romania</option>
+              <option>Russia</option>
+              <option>Rwanda</option>
+              <option>Saint Kitts and Nevis</option>
+              <option>Saint Lucia</option>
+              <option>Saint Vincent and the Grenadines</option>
+              <option>Samoa</option>
+              <option>San Marino</option>
+              <option>Sao Tome and Principe</option>
+              <option>Saudi Arabia</option>
+              <option>Senegal</option>
+              <option>Serbia</option>
+              <option>Seychelles</option>
+              <option>Sierra Leone</option>
+              <option>Singapore</option>
+              <option>Slovakia</option>
+              <option>Slovenia</option>
+              <option>Solomon Islands</option>
+              <option>Somalia</option>
+              <option>South Africa</option>
+              <option>South Korea</option>
+              <option>South Sudan</option>
+              <option>Spain</option>
+              <option>Sri Lanka</option>
+              <option>Sudan</option>
+              <option>Suriname</option>
+              <option>Sweden</option>
+              <option>Switzerland</option>
+              <option>Syria</option>
+              <option>Tajikistan</option>
+              <option>Tanzania</option>
+              <option>Thailand</option>
+              <option>Timor-Leste</option>
+              <option>Togo</option>
+              <option>Tonga</option>
+              <option>Trinidad and Tobago</option>
+              <option>Tunisia</option>
+              <option>Turkey</option>
+              <option>Turkmenistan</option>
+              <option>Tuvalu</option>
+              <option>Uganda</option>
+              <option>Ukraine</option>
+              <option>United Arab Emirates</option>
+              <option>United Kingdom</option>
+              <option>United States of America</option>
+              <option>Uruguay</option>
+              <option>Uzbekistan</option>
+              <option>Vanuatu</option>
+              <option>Venezuela</option>
+              <option>Vietnam</option>
+              <option>Yemen</option>
+              <option>Zambia</option>
+              <option>Zimbabwe</option>
+            </select>
+          </div>
+
+          <!-- Timezone -->
+          <div class="mb-3">
+            <label class="form-label">Timezone</label>
+            <select class="form-control" required>
+              <option disabled selected>Select timezone</option>
+              <option>(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+              <option>(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+              <option>(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+              <option>(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+              <option>(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+              <option>(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+              <option>(GMT +6:00) Almaty, Dhaka, Colombo</option>
+              <option>(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+              <option>(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+              <option>(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+              <option>(GMT +2:00) Kaliningrad, South Africa</option>
+              <option>(GMT +1:00) Brussels, Copenhagen, Madrid, Paris</option>
+              <option>(GMT 0:00) Western Europe Time, London, Lisbon, Casablanca</option>
+              <option>(GMT -1:00) Azores, Cape Verde Islands</option>
+              <option>(GMT -2:00) Mid-Atlantic</option>
+              <option>(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+              <option>(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+              <option>(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima</option>
+              <option>(GMT -6:00) Central Time (US & Canada), Mexico City</option>
+              <option>(GMT -7:00) Mountain Time (US & Canada)</option>
+              <option>(GMT -8:00) Pacific Time (US & Canada)</option>
+              <option>(GMT -9:00) Alaska</option>
+              <option>(GMT -10:00) Hawaii</option>
+              <option>(GMT -11:00) Midway Island, Samoa</option>
+              <option>(GMT -12:00) Eniwetok, Kwajalein</option>
+            </select>
+          </div>
+
+          <!-- باقي الفورم (نفس النموذج السابق) -->
+          <!-- Phone -->
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="number" class="form-control" />
+          </div>
+
+          <!-- ID Number -->
+          <div class="mb-3">
+            <label class="form-label">ID Number</label>
+            <input type="number" class="form-control" />
+          </div>
+
+          <!-- Radios -->
+          <div class="mb-3 text-center">
+            <h5>Would you like to receive the newsletter?</h5>
+            <input type="radio" name="newsletter"> Yes
+            <input type="radio" class="ms-3" name="newsletter"> No
+          </div>
+
+          <div class="mb-3 text-center">
+            <h5>Please choose preferred language</h5>
+            <input type="radio" name="lang"> Arabic
+            <input type="radio" class="ms-3" name="lang"> English
+          </div>
+
+          <div class="mb-3 text-center">
+            <h5>Would you like to receive SMS?</h5>
+            <input type="radio" name="sms"> Yes
+            <input type="radio" class="ms-3" name="sms"> No
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn w-100 green text-white fw-bold">Save Changes</button>
+
+          <!-- Upload ID -->
+          <div class="mb-3 text-center mt-3">
+            <div class="d-flex justify-content-between">
+              <span>Upload your ID</span>
+              <input type="file" class="form-control w-75 ps-3 rounded mt-2 text-light red" />
+            </div>
+            <button class="btn btn-light mt-2">View Your ID</button>
+          </div>
+
+          <!-- Payment Details -->
+          <div class="mb-3 text-center">
+            <h5>Payment Details</h5>
+            <p>Current Bid Deposit: 50000 AED</p>
+            <label class="form-label">Increase security bid</label>
+            <select class="form-control">
+              <option>Maximum bid limit 5000 - 100000</option>
+              <option>Maximum bid limit 7500 - 150000</option>
+              <option>Maximum bid limit 10000 - 2000000</option>
+              <option>Maximum bid limit 50000 - 5000000</option>
+              <option>Maximum bid limit 300000 - 10000000</option>
+            </select>
+          </div>
+
+          <!-- Note -->
+          <div class="mb-3">
+            <p class="text-light red p-1">The Security Deposit using a credit card is refundable automatically after 21
+              days as per the bank policy</p>
+            <button class="btn w-100 green text-white fw-bold">Pay</button>
+            <img src="Images/visa-mastercard-americanexpress-removebg-preview.png" class="mt-3 img-fluid" alt="pay">
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div><!-- overlay -->
+  </div><!-- image -->
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="nav-item">
+      <a href="index.html">
+        <i class="fa fa-home"></i>
+        <span>Home</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="settings.html">
+        <i class="fa fa-cog"></i>
+        <span>Settings</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <div class="dropdown">
+        <button class="dropdown-toggle" id="btnGroupDrop1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-circle-user fa-2x"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="btnGroupDrop1">
+          <li><a class="dropdown-item" href="requested-services.html">Requested Services</a></li>
+          <li><a class="dropdown-item " href="purchases.html">Purchases</a></li>
+          <li><a class="dropdown-item active" href="profile.html">My Profile</a></li>
+          <li><a class="dropdown-item" href="unsold-vehicles.html">Unsold Vehicles</a></li>
+          <li><a class="dropdown-item" href="invoice-list.html">Invoice List</a></li>
+          <li><a class="dropdown-item" href="payment-list.html">Payment List</a></li>
+          <li><a class="dropdown-item " href="messages.html">Messages</a></li>
+        </ul>
+      </div>
+      <span>My Account</span>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

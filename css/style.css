@@ -1,0 +1,236 @@
+    /* -------Header--------- */
+    .site-header {
+      opacity: 0.95;
+      background: rgba(0, 0, 0, .9);
+      border-bottom: 1px solid #eee;
+      padding: 0.4rem 0.7rem;
+      width: 100%;
+      z-index: 1050;
+    }
+
+    /* Logo */
+    .logo img {
+      height: 35px !important;
+      width: 280px;
+    }
+
+    /* Desktop Menu */
+    .desktop-menu .nav-link {
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .desktop-menu .nav-link:hover,
+    .desktop-menu .nav-link.active {
+      color: #298b61;
+      font-weight: 600;
+    }
+
+    /* Offcanvas */
+    .offcanvas-body {
+      padding: 0.5rem 0;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .offcanvas-body::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .offcanvas-body {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Menu links */
+    .offcanvas-list .menu-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .menu-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      color: #333;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .menu-link .icon {
+      font-size: 1.2rem;
+      color: #298b61;
+    }
+
+    .menu-link:hover {
+      background: #f5f5f5;
+      color: #298b61;
+    }
+
+    .menu-link.active {
+      background: hsl(155, 94%, 94%);
+      color: #298b61;
+      font-weight: 600;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 768px) {
+      .desktop-menu {
+        display: none !important;
+      }
+
+      .logo img {
+        height: 32px;
+      }
+    }
+
+    /* -------Footer--------- */
+    footer.app-footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #fff;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px 0;
+      padding-bottom: max(5px, env(safe-area-inset-bottom));
+      z-index: 1040;
+      border-radius: 15px 15px 0 0;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+      color: #298b61;
+    }
+
+    footer.app-footer .nav-item {
+      flex: 1;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #333;
+      cursor: pointer;
+    }
+
+    footer.app-footer .nav-item a {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 6px 0;
+      text-decoration: none;
+      color: #333;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+     .app-footer .nav-item a,
+    .app-footer .nav-item button {
+      /* color: #298b61; */
+      text-decoration: none;
+      background: transparent;
+      border: none;
+    }
+
+    footer.app-footer .nav-item a svg,
+    footer.app-footer .nav-item a i {
+      font-size: 1.35rem;
+      line-height: 1;
+      display: block;
+    }
+
+    footer.app-footer .nav-item a span {
+      font-size: 0.8rem;
+    }
+
+    footer.app-footer .nav-item a.active {
+      color: #298b61;
+      font-weight: 600;
+    }
+
+    footer.app-footer .nav-item a:active {
+      transform: translateY(1px);
+    }
+
+
+    /* home page */
+    /* Background Hero */
+    .image {
+      background-image: url("../Images/al-wataneya-auction-1678164094022.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.55);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .container-home {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+    }
+
+    .container-home h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 2rem;
+    }
+
+    /* Card styling */
+    .card {
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-body h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #333;
+      text-align: center;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .container-home h2 {
+        font-size: 1.6rem;
+      }
+
+      .card img {
+        height: 140px;
+      }
+    }

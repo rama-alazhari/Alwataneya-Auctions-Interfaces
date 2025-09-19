@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction Guide</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+<style>
+    body {
+      background: #f8f9fa;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .guide-container {
+      max-width: 950px;
+      margin: auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem 1.2rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .guide-container h2 {
+      color: #298b61;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+
+    .guide-container p {
+      font-size: 0.95rem;
+      color: #6c757d;
+    }
+
+    /* Accordion */
+    .accordion-item {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .accordion-button {
+      font-weight: 600;
+      font-size: 1rem;
+      background: #fdfdfd;
+      color: #333;
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-button:focus {
+      box-shadow: none;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background: #298b61;
+      color: #fff;
+    }
+
+    .accordion-body {
+      font-size: 0.93rem;
+      line-height: 1.6;
+      padding: 1rem 1.25rem;
+      background: #fcfcfc;
+    }
+
+    .accordion-body ol {
+      padding-left: 1.2rem;
+    }
+
+    .accordion-body li {
+      margin-bottom: 0.6rem;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 576px) {
+      .guide-container {
+        padding: 1.5rem 1rem;
+        border-radius: 16px;
+      }
+
+      .guide-container h2 {
+        font-size: 1.4rem;
+      }
+
+      .accordion-button {
+        font-size: 0.95rem;
+        padding: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+   <!-- Header -->
+    <header class="site-header fixed-top">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between">
+
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+                    aria-label="Open menu">
+                    <i class="fa-solid fa-bars text-light fa-lg"></i>
+                </button>
+
+                <!-- Desktop Menu -->
+                <nav class="desktop-menu d-none d-md-flex gap-4">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="online-auction.html" class="nav-link">Online Auction</a>
+                    <a href="silent-auction.html" class="nav-link">Silent Auction</a>
+                    <a href="auction-Guide.html" class="nav-link">Auction Guide</a>
+                    <a href="about.html" class="nav-link">About Wataneya</a>
+                    <a href="contactUs.html" class="nav-link">Contact Us</a>
+                    <a href="login.html" class="btn btn-sm btn-dark text-light rounded px-3">Login | Register Now</a>
+                    <button class="btn btn-dark">العربية</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-bold" id="offcanvasMenuLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="offcanvas-list list-unstyled p-0 m-0">
+                <li class="menu-item"><a href="index.html" class="menu-link"><i class="fa fa-home icon"></i><span
+                            class="label">Home</span></a></li>
+                <li class="menu-item"><a href="online-auction.html" class="menu-link"><i class="fa fa-gavel icon"></i><span
+                            class="label">Online Auction</span></a></li>
+                <li class="menu-item"><a href="silent-auction.html" class="menu-link"><i class="fa fa-gavel icon"></i><span
+                            class="label">Silent Auction</span></a></li>
+                <li class="menu-item"><a href="auction-Guide.html" class="menu-link"><i class="fa fa-book icon"></i><span
+                            class="label">Auction Guide</span></a></li>
+                <li class="menu-item"><a href="about.html" class="menu-link"><i class="fa fa-info-circle icon"></i><span
+                            class="label">About Wataneya</span></a></li>
+                <li class="menu-item"><a href="contactUs.html" class="menu-link"><i class="fa fa-address-book icon"></i><span
+                            class="label">Contact Us</span></a></li>
+                <li class="menu-item"><a href="login.html" class="menu-link"><i class="fa fa-sign-in-alt icon"></i><span
+                            class="label">Login</span></a></li>
+                <li class="menu-item"><a href="register.html" class="menu-link"><i class="fa fa-user-plus icon"></i><span
+                            class="label">Register Now</span></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><i class="fa fa-language icon"></i><span
+                            class="label">Language</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+  <section style="padding: 2rem 1rem; min-height: 100vh;">
+    <div class="guide-container mt-5">
+      <h2 class="text-center mb-3">Auction Guide</h2>
+      <p class="text-center mb-4">
+        Provisions and Conditions in National Auctions Internet Site
+        <br>(Al Wataneya Auctions)
+      </p>
+
+      <!-- Accordion -->
+      <div class="accordion" id="auctionGuideAccordion">
+        <!-- Intro -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingIntro">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIntro"
+              aria-expanded="true" aria-controls="collapseIntro">
+              <i class="fa-solid fa-info-circle me-2"></i> Introduction
+            </button>
+          </h2>
+          <div id="collapseIntro" class="accordion-collapse collapse show" aria-labelledby="headingIntro"
+            data-bs-parent="#auctionGuideAccordion">
+            <div class="accordion-body">
+              The rules, provisions and texts included in this agreement govern and control the relationship between all
+              parties. Any ambiguity shall only be interpreted through agreements signed by Al Wataneya Auctions.
+              Unauthorized agreements are not binding.
+            </div>
+          </div>
+        </div>
+
+        <!-- Provisions -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingProv">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseProv" aria-expanded="false" aria-controls="collapseProv">
+              <i class="fa-solid fa-scale-balanced me-2"></i> Provisions & Responsibilities (1 – 15)
+            </button>
+          </h2>
+          <div id="collapseProv" class="accordion-collapse collapse" aria-labelledby="headingProv"
+            data-bs-parent="#auctionGuideAccordion">
+            <div class="accordion-body">
+              <ol start="1">
+                <li>The website is affiliated to a federal governmental institution.</li>
+                <li>Registration is considered acceptance of all rules and provisions.</li>
+                <li>Participants must register, choose username & password.</li>
+                <li>Vehicles must be inspected before bidding, sold “as is”.</li>
+                <li>Vehicle is sold in its current situation.</li>
+                <li>Insurance deposit required (see Item 23).</li>
+                <li>Winners must pay within 48 hours, else deposit confiscated.</li>
+                <li>Daily penalty AED 100 for delayed payments.</li>
+                <li>Violations → deposit confiscated + legal action.</li>
+                <li>No limit on number of vehicles per participant (per law).</li>
+                <li>Participants must be over 21 years old.</li>
+                <li>Members cannot share their accounts; full responsibility applies.</li>
+                <li>Members must not manipulate prices, publish false info, hack, or violate IT laws.</li>
+                <li>Al Wataneya may suspend/terminate services or delete accounts.</li>
+                <li>Service charges may change temporarily for promotions or new services.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vehicle Rules -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingInspect">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseInspect" aria-expanded="false" aria-controls="collapseInspect">
+              <i class="fa-solid fa-car me-2"></i> Vehicle & Inspection Rules (16 – 21)
+            </button>
+          </h2>
+          <div id="collapseInspect" class="accordion-collapse collapse" aria-labelledby="headingInspect"
+            data-bs-parent="#auctionGuideAccordion">
+            <div class="accordion-body">
+              <ol start="16">
+                <li>Vehicles guaranteed only per inspection report (max 3 days from payment).</li>
+                <li>Security deposit refundable in 10–14 days (bank).</li>
+                <li>Credit card deposit refunded automatically after 21 days.</li>
+                <li>Extra 2 minutes added if bids are placed near auction end.</li>
+                <li>Bid categories: 100–200–500–1000–3000–5000 AED.</li>
+                <li>Availability of bid chips depends on vehicle price bracket.</li>
+                <li>Results and purchases are notified via SMS and email.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Refund -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingRefund">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseRefund" aria-expanded="false" aria-controls="collapseRefund">
+              <i class="fa-solid fa-money-bill-wave me-2"></i> Refund Policy & Privacy (22 – 24)
+            </button>
+          </h2>
+          <div id="collapseRefund" class="accordion-collapse collapse" aria-labelledby="headingRefund"
+            data-bs-parent="#auctionGuideAccordion">
+            <div class="accordion-body">
+              <ol start="22">
+                <li>No refunds after winning unless per stated conditions.</li>
+                <li>Complaints handled via support@alwatanya.ae or +97168006006.</li>
+                <li>Customer data protected; only aggregate statistics collected.</li>
+                <li>Trademarks, logos, and content reserved to Al Wataneya Auctions.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auction Procedures -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingProcedures">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseProcedures" aria-expanded="false" aria-controls="collapseProcedures">
+              <i class="fa-solid fa-gavel me-2"></i> Auction Procedures & Auto-Bid (25 – 26)
+            </button>
+          </h2>
+          <div id="collapseProcedures" class="accordion-collapse collapse" aria-labelledby="headingProcedures"
+            data-bs-parent="#auctionGuideAccordion">
+            <div class="accordion-body">
+              <ol start="25">
+                <li>Open user account, pay deposit, activate account to participate.</li>
+                <li>Results subject to seller’s approval; payment within 2–21 days.</li>
+                <li>Auto-bid feature allows max bid setup; bidder responsible for max value.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buyer Terms -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingBuyer">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseBuyer" aria-expanded="false" aria-controls="collapseBuyer">
+              <i class="fa-solid fa-user-check me-2"></i> Terms & Conditions for Buyers (27 – 49)
+            </button>
+          </h2>
+          <div id="collapseBuyer" class="accordion-collapse collapse" aria-labelledby="headingBuyer"
+            data-bs-parent="#auctionGuideAccordion">
+            <div class="accordion-body">
+              <ol start="27">
+                <li>Buyer must inspect vehicles before bidding; all sales final.</li>
+                <li>Security deposit required (per Item 25), refundable if no purchase.</li>
+                <li>Deposit levels: AED 5,000 / 7,500 / 10,000 / 50,000 depending on purchase range.</li>
+                <li>Payment within 48 hours; AED 100 daily fine up to 7 days.</li>
+                <li>Winning bid excludes fees (transfer, licensing, transport, etc.).</li>
+                <li>Vehicles must be removed within 72 hours of payment.</li>
+                <li>Deposit may be increased if purchases exceed AED 100,000.</li>
+                <li>Ownership transfer must be done within 7 days.</li>
+                <li>All vehicles subject to 5% VAT.</li>
+                <li>Seller must transfer possession within 2 days, or face penalties.</li>
+                <li>Disputes (e.g. fraud, odometer tampering) are between buyer & seller.</li>
+                <li>Vehicles must be transported only by Al Wataneya Auctions.</li>
+                <li>Administrative fees: AED 300 (motorcycles), 380 (light), 480 (heavy).</li>
+                <li>Buyer must remove institutional logos before resale.</li>
+                <li>Sales subject to management approval (2–21 business days).</li>
+                <li>Late towing → fines: AED 20 (light), AED 50 (heavy/buses).</li>
+                <li>Additional inspection fee AED 250 per vehicle.</li>
+                <li>Insurance deduction on cancellation: 25% (cheque), 10% (card/cash, min AED 2,000).</li>
+                <li>Additional 5% court fine for cancelled court vehicles.</li>
+                <li>If buyer takes possession before official certificate, buyer assumes risk.</li>
+                <li>Fixed admin fee AED 750 (Emirates Moto vehicles).</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="nav-item">
+            <a href="index.html">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="settings.html">
+                <i class="fa fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <div class="dropdown">
+                <button class="dropdown-toggle" id="btnGroupDrop1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="btnGroupDrop1">
+                    <li><a class="dropdown-item" href="requested-services.html">Requested Services</a></li>
+                    <li><a class="dropdown-item" href="purchases.html">Purchases</a></li>
+                    <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                    <li><a class="dropdown-item" href="unsold-vehicles.html">Unsold Vehicles</a></li>
+                    <li><a class="dropdown-item" href="invoice-list.html">Invoice List</a></li>
+                    <li><a class="dropdown-item" href="payment-list.html">Payment List</a></li>
+                    <li><a class="dropdown-item" href="messages.html">Messages</a></li>
+                </ul>
+            </div>
+            <span>My Account</span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

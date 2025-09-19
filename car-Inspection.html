@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Inspection</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header fixed-top">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between">
+
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+                    aria-label="Open menu">
+                    <i class="fa-solid fa-bars text-light fa-lg"></i>
+                </button>
+
+                <!-- Desktop Menu -->
+                <nav class="desktop-menu d-none d-md-flex gap-4">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="online-auction.html" class="nav-link">Online Auction</a>
+                    <a href="silent-auction.html" class="nav-link">Silent Auction</a>
+                    <a href="auction-Guide.html" class="nav-link">Auction Guide</a>
+                    <a href="about.html" class="nav-link">About Wataneya</a>
+                    <a href="contactUs.html" class="nav-link">Contact Us</a>
+                    <a href="login.html" class="btn btn-sm btn-dark text-light rounded px-3">Login | Register Now</a>
+                    <button class="btn btn-dark">العربية</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-bold" id="offcanvasMenuLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="offcanvas-list list-unstyled p-0 m-0">
+                <li class="menu-item"><a href="index.html" class="menu-link"><i class="fa fa-home icon"></i><span
+                            class="label">Home</span></a></li>
+                <li class="menu-item"><a href="online-auction.html" class="menu-link"><i
+                            class="fa fa-gavel icon"></i><span class="label">Online Auction</span></a></li>
+                <li class="menu-item"><a href="silent-auction.html" class="menu-link"><i
+                            class="fa fa-gavel icon"></i><span class="label">Silent Auction</span></a></li>
+                <li class="menu-item"><a href="auction-Guide.html" class="menu-link"><i
+                            class="fa fa-book icon"></i><span class="label">Auction Guide</span></a></li>
+                <li class="menu-item"><a href="about.html" class="menu-link"><i class="fa fa-info-circle icon"></i><span
+                            class="label">About Wataneya</span></a></li>
+                <li class="menu-item"><a href="contactUs.html" class="menu-link"><i
+                            class="fa fa-address-book icon"></i><span class="label">Contact Us</span></a></li>
+                <li class="menu-item"><a href="login.html" class="menu-link"><i class="fa fa-sign-in-alt icon"></i><span
+                            class="label">Login</span></a></li>
+                <li class="menu-item"><a href="register.html" class="menu-link"><i
+                            class="fa fa-user-plus icon"></i><span class="label">Register Now</span></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><i class="fa fa-language icon"></i><span
+                            class="label">Language</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- car Inspection -->
+  <!-- car Inspection -->
+<section>
+  <div class="container mt-5 pt-3">
+    <h2 class="text-center text-light p-1" style="background-color: #298b61;">Car Inspection</h2>
+    <img src="Images/aboutusmain.png" width="400" alt="car" class="mt-3 d-block mx-auto">
+    <p class="mt-3">
+      When it comes to purchasing a vehicle, knowledge is power. With Al Wataneya Auctions' vehicle inspection
+      services, conducted by the trusted experts at Emirates Transport, you gain all the insights you need to make
+      informed decisions.
+    </p>
+    <button class="btn text-light w-100 mt-3" style="background-color: #298b61;" id="contactBtn">
+      Contact Us
+    </button>
+  </div>
+</section>
+
+<!-- Contact Form Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header" style="background-color: #298b61;">
+        <h5 class="modal-title text-light" id="contactModalLabel">Contact Us</h5>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form id="contactForm">
+          <div class="mb-3">
+            <label class="form-label">Full name</label>
+            <input type="text" class="form-control" placeholder="Enter the full name" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Enter email" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mobile No</label>
+            <div class="input-group">
+              <span class="input-group-text">+971</span>
+              <input type="tel" class="form-control" placeholder="xx xxx xxx" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" rows="3" placeholder="Enter the message" required></textarea>
+          </div>
+          <div class="d-flex justify-content-between mt-4">
+            <button type="button" class="btn btn-secondary w-45" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn text-light w-45" style="background-color: #298b61;">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+  <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        ✅ Your message has been sent successfully!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="nav-item">
+            <a href="index.html">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="settings.html">
+                <i class="fa fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <div class="dropdown">
+                <button class="dropdown-toggle" id="btnGroupDrop1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="btnGroupDrop1">
+                    <li><a class="dropdown-item" href="requested-services.html">Requested Services</a></li>
+                    <li><a class="dropdown-item" href="purchases.html">Purchases</a></li>
+                    <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                    <li><a class="dropdown-item" href="unsold-vehicles.html">Unsold Vehicles</a></li>
+                    <li><a class="dropdown-item" href="invoice-list.html">Invoice List</a></li>
+                    <li><a class="dropdown-item" href="payment-list.html">Payment List</a></li>
+                    <li><a class="dropdown-item" href="messages.html">Messages</a></li>
+                </ul>
+            </div>
+            <span>My Account</span>
+        </div>
+    </footer>
+
+   <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // فتح المودال
+  document.getElementById("contactBtn").addEventListener("click", function () {
+    const modal = new bootstrap.Modal(document.getElementById("contactModal"));
+    modal.show();
+  });
+
+  // عند إرسال الفورم
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // منع الإرسال الحقيقي
+
+    // إغلاق المودال
+    const modalEl = document.getElementById("contactModal");
+    const modal = bootstrap.Modal.getInstance(modalEl);
+    modal.hide();
+
+    // إظهار Toast
+    const toastEl = document.getElementById("successToast");
+    const toast = new bootstrap.Toast(toastEl);
+    toast.show();
+  });
+</script>
+</body>
+
+</html>
