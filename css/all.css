@@ -2056,7 +2056,7 @@ readers do not read off random characters that represent icons */
 .fa-bucket::before {
   content: "\e4cf"; }
 
-.fa-image::before {
+.fa-Image::before {
   content: "\f03e"; }
 
 .fa-microphone::before {
@@ -3097,7 +3097,7 @@ readers do not read off random characters that represent icons */
 .fa-rupee::before {
   content: "\f156"; }
 
-.fa-file-image::before {
+.fa-file-Image::before {
   content: "\f1c5"; }
 
 .fa-circle-question::before {
@@ -4159,7 +4159,7 @@ readers do not read off random characters that represent icons */
 .fa-venus-double::before {
   content: "\f226"; }
 
-.fa-images::before {
+.fa-Images::before {
   content: "\f302"; }
 
 .fa-calculator::before {
@@ -5746,7 +5746,7 @@ readers do not read off random characters that represent icons */
 .fa-person-falling::before {
   content: "\e546"; }
 
-.fa-image-portrait::before {
+.fa-Image-portrait::before {
   content: "\f3e0"; }
 
 .fa-portrait::before {

@@ -163,8 +163,8 @@
 
     /* home page */
     /* Background Hero */
-    .image {
-      background-image: url("../Images/al-wataneya-auction-1678164094022.jpg");
+    .Image {
+      background-Image: url("../Images/al-wataneya-auction-1678164094022.jpg");
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
