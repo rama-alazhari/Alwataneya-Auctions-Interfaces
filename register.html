@@ -16,17 +16,21 @@
       font-family: Arial, sans-serif;
     }
 
-      .Image{
+    .Image {
       background-Image: url(Images/laptop.jpg);
       background-attachment: fixed;
       background-size: cover;
-      height: 1000px;
+      min-height: 150vh;
+      /* أقل شي يغطي الشاشة */
+      height: auto;
+      /* يخلي الطول يتمدد حسب المحتوى */
     }
-    .overlay{
+
+    .overlay {
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.5);
-       margin: auto;
+      margin: auto;
     }
 
     .login-box {
@@ -34,10 +38,8 @@
       backdrop-filter: blur(8px);
       border-radius: 15px;
       padding: 2rem;
-      /* max-width: 450px;
-      width: 100%; */
       color: #fff;
- box-shadow: 0 0 20px rgba(55, 55, 55, 0.6);
+      box-shadow: 0 0 20px rgba(55, 55, 55, 0.6);
     }
 
     .btn.red {
@@ -147,103 +149,103 @@
     </div>
   </div>
 
- <div class="Image">
-<div class="overlay">
-  <section class="container mt-5">
-    <div class="login-box text-center mt-5">
-       <!-- Logo -->
-    <img src="Images/logo.png" alt="Logo" class="mb-3 img-fluid" />
-      <h2 class="fs-4 fw-bold mb-4">Register</h2>
-      <div class="d-flex justify-content-center gap-2 mb-4">
-        <button class="toggle-btn" id="btnIndividual" onclick="toggleForm('individual')">Individual</button>
-        <button class="toggle-btn" id="btnOrganization" onclick="toggleForm('organization')">Organization</button>
-      </div>
+  <div class="Image">
+    <div class="overlay">
+      <section class="container mt-5">
+        <div class="login-box text-center mt-5">
+          <!-- Logo -->
+          <img src="Images/logo.png" alt="Logo" class="mb-3 img-fluid" />
+          <h2 class="fs-4 fw-bold mb-4">Register</h2>
+          <div class="d-flex justify-content-center gap-2 mb-4">
+            <button class="toggle-btn" id="btnIndividual" onclick="toggleForm('individual')">Individual</button>
+            <button class="toggle-btn" id="btnOrganization" onclick="toggleForm('organization')">Organization</button>
+          </div>
 
-      <!-- Individual Form -->
-      <form id="individualForm">
-        <div class="mb-3 text-start">
-          <label class="form-label">Full name in English</label>
-          <input type="text" class="form-control" placeholder="Full name in English">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Username</label>
-          <input type="text" class="form-control" placeholder="Username">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Password</label>
-          <input type="password" class="form-control" placeholder="Password">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Repeat Password</label>
-          <input type="password" class="form-control" placeholder="Repeat Password">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Your email address</label>
-          <input type="email" class="form-control" placeholder="Your email address">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Phone</label>
-          <input type="number" class="form-control" placeholder="00971501231234">
-        </div>
-        <div class="mb-3 form-check text-start">
-          <input type="checkbox" class="form-check-input" id="agree1">
-          <label class="form-check-label" for="agree1">
-            I agree to the <a href="auction-Guide.html" class="text-info">Terms and Conditions</a>
-          </label>
-        </div>
-        <button type="submit" class="btn red w-100 mb-3">Register Now</button>
-      </form>
+          <!-- Individual Form -->
+          <form id="individualForm">
+            <div class="mb-3 text-start">
+              <label class="form-label">Full name in English</label>
+              <input type="text" class="form-control" placeholder="Full name in English">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Username</label>
+              <input type="text" class="form-control" placeholder="Username">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Repeat Password</label>
+              <input type="password" class="form-control" placeholder="Repeat Password">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Your email address</label>
+              <input type="email" class="form-control" placeholder="Your email address">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Phone</label>
+              <input type="number" class="form-control" placeholder="00971501231234">
+            </div>
+            <div class="mb-3 form-check text-start">
+              <input type="checkbox" class="form-check-input" id="agree1">
+              <label class="form-check-label" for="agree1">
+                I agree to the <a href="auction-Guide.html" class="text-info">Terms and Conditions</a>
+              </label>
+            </div>
+            <button type="submit" class="btn red w-100 mb-3">Register Now</button>
+          </form>
 
-      <!-- Organization Form -->
-      <form id="organizationForm" style="display:none;">
-        <div class="mb-3 text-start">
-          <label class="form-label">Trade License Number</label>
-          <input type="text" class="form-control" placeholder="Trade License Number">
+          <!-- Organization Form -->
+          <form id="organizationForm" style="display:none;">
+            <div class="mb-3 text-start">
+              <label class="form-label">Trade License Number</label>
+              <input type="text" class="form-control" placeholder="Trade License Number">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Trade License Exp Date</label>
+              <input type="date" class="form-control">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Tax Registration Number</label>
+              <input type="number" class="form-control" placeholder="Tax Registration Number">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Full name in English</label>
+              <input type="text" class="form-control" placeholder="Full name in English">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Username</label>
+              <input type="text" class="form-control" placeholder="Username">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Repeat Password</label>
+              <input type="password" class="form-control" placeholder="Repeat Password">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="Your email address">
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Phone</label>
+              <input type="number" class="form-control" placeholder="00971501231234">
+            </div>
+            <div class="mb-3 form-check text-start">
+              <input type="checkbox" class="form-check-input" id="agree2">
+              <label class="form-check-label" for="agree2">
+                I agree to the <a href="auction-Guide.html" class="text-info">Terms and Conditions</a>
+              </label>
+            </div>
+            <button type="submit" class="btn red w-100 mb-3">Register Now</button>
+          </form>
         </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Trade License Exp Date</label>
-          <input type="date" class="form-control">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Tax Registration Number</label>
-          <input type="number" class="form-control" placeholder="Tax Registration Number">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Full name in English</label>
-          <input type="text" class="form-control" placeholder="Full name in English">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Username</label>
-          <input type="text" class="form-control" placeholder="Username">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Password</label>
-          <input type="password" class="form-control" placeholder="Password">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Repeat Password</label>
-          <input type="password" class="form-control" placeholder="Repeat Password">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-control" placeholder="Your email address">
-        </div>
-        <div class="mb-3 text-start">
-          <label class="form-label">Phone</label>
-          <input type="number" class="form-control" placeholder="00971501231234">
-        </div>
-        <div class="mb-3 form-check text-start">
-          <input type="checkbox" class="form-check-input" id="agree2">
-          <label class="form-check-label" for="agree2">
-            I agree to the <a href="auction-Guide.html" class="text-info">Terms and Conditions</a>
-          </label>
-        </div>
-        <button type="submit" class="btn red w-100 mb-3">Register Now</button>
-      </form>
-    </div>
-  </section>
+      </section>
 
-  </div><!-- overlay -->
+    </div><!-- overlay -->
   </div><!-- Image -->
 
   <!-- Footer -->

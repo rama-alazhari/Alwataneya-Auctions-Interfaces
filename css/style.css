@@ -35,6 +35,9 @@
       max-height: 80vh;
       overflow-y: auto;
     }
+    .offcanvas{
+      z-index: 41000;
+    }
 
     .offcanvas-body::-webkit-scrollbar {
       width: 0;
@@ -132,7 +135,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-     .app-footer .nav-item a,
+    .app-footer .nav-item a,
     .app-footer .nav-item button {
       /* color: #298b61; */
       text-decoration: none;
@@ -167,12 +170,14 @@
       background-Image: url("../Images/al-wataneya-auction-1678164094022.jpg");
       background-size: cover;
       background-repeat: no-repeat;
-      background-attachment: fixed;
-      height: 100vh;
+      /* background-attachment: fixed; */
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+      min-height: calc(100vh - 120px);      /* يطرح مساحة الهيدر والفوتر */
+      background-position: center;
+      background-attachment: scroll;      /* خليها scroll بدل fixed لتفادي مشاكل iOS */
     }
 
     .overlay {
@@ -192,10 +197,11 @@
     }
 
     .container-home h2 {
-      font-size: 2.2rem;
       font-weight: 700;
+      font-size: clamp(1.2rem, 4vw, 2.2rem);
+      /* يتغير حسب حجم الشاشة */
       line-height: 1.4;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     /* Card styling */
@@ -234,3 +240,23 @@
         height: 140px;
       }
     }
+
+    /* على الموبايل: خلي الكروت ثابتة صفين */
+@media (max-width: 768px) {
+  .row-cols-2 > * {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .card img {
+    height: 140px; /* نفس الارتفاع على كل الموبايلات */
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-home h2 {
+    font-size: 1.4rem;   /* حجم ثابت */
+    line-height: 1.3;
+  }
+}
